@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import InputField from '../common/InputField';
 
-function FriendForm({ onAddFriends, onShowAddFriend, showAddFriend }) {
+function FriendForm({ onAddFriends, onShowAddFriend }) {
   const [friendName, setFriendName] = useState('');
   const [image, setImage] = useState('');
 
@@ -57,13 +57,6 @@ function FriendForm({ onAddFriends, onShowAddFriend, showAddFriend }) {
     setImage('');
   }
 
-  if (!showAddFriend)
-    return (
-      <button onClick={onShowAddFriend} type='button'>
-        Add Friend
-      </button>
-    );
-
   return (
     <div className='friend-form'>
       <form className='form' onSubmit={handleFormSubmit}>
@@ -78,9 +71,6 @@ function FriendForm({ onAddFriends, onShowAddFriend, showAddFriend }) {
         </InputField>
         <button type='submit'>Add</button>
       </form>
-      <button onClick={onShowAddFriend} type='button'>
-        Close
-      </button>
     </div>
   );
 }

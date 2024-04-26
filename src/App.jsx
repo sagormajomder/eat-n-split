@@ -38,6 +38,7 @@ function App() {
 
   function handleShowAddFriend() {
     setShowAddFriend(v => !v);
+    setSelectedFriendObj(null);
   }
 
   function handleAddFriends(newFriend) {
@@ -50,19 +51,6 @@ function App() {
   }
 
   function handleSplitBill(value) {
-    // setFriends(friends =>
-    //   friends.map(friend => {
-    //     if (friend.id === id) {
-    //       if (whoisPaying === 'user') {
-    //         friend.owe += paidByFriend;
-    //       } else {
-    //         friend.owe -= paidByUser;
-    //       }
-    //       return friend;
-    //     } else return friend;
-    //   })
-    // );
-
     setFriends(friends =>
       friends.map(friend =>
         friend.id === selectedFriendObj.id
@@ -83,14 +71,19 @@ function App() {
             selectedFriendObj={selectedFriendObj}
             onSelectFriend={handleSelectFriend}
           />
-          <FriendForm
-            onAddFriends={handleAddFriends}
-            onShowAddFriend={handleShowAddFriend}
-            showAddFriend={showAddFriend}
-          />
+          {showAddFriend && (
+            <FriendForm
+              onAddFriends={handleAddFriends}
+              onShowAddFriend={handleShowAddFriend}
+            />
+          )}
+          <button onClick={handleShowAddFriend} type='button'>
+            {showAddFriend ? 'Close' : 'Add friend'}
+          </button>
         </LeftSide>
         {selectedFriendObj && (
           <RightSide
+            key={selectedFriendObj.id}
             friendObj={selectedFriendObj}
             onSplitBill={handleSplitBill}
           />
