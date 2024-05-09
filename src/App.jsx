@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import FriendForm from './components/Left/FriendForm';
-import Friends from './components/Left/Friends';
-import LeftSide from './components/Left/LeftSide';
-import RightSide from './components/Right/RightSide';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login/Login';
 
 const friendList = [
   {
@@ -28,67 +26,14 @@ const friendList = [
 ];
 
 function App() {
-  const [showAddFriend, setShowAddFriend] = useState(false);
-  const [friends, setFriends] = useState([]);
-  const [selectedFriendObj, setSelectedFriendObj] = useState(null);
-
-  useEffect(function () {
-    setFriends(friendList);
-  }, []);
-
-  function handleShowAddFriend() {
-    setShowAddFriend(v => !v);
-    setSelectedFriendObj(null);
+  const [isLogin, setIsLogin] = useState(false);
+  function handleIsLogin(value) {
+    setIsLogin(value);
   }
-
-  function handleAddFriends(newFriend) {
-    setFriends(f => [...f, newFriend]);
-  }
-
-  function handleSelectFriend(friend) {
-    setSelectedFriendObj(curr => (curr?.id === friend.id ? null : friend));
-    setShowAddFriend(false);
-  }
-
-  function handleSplitBill(value) {
-    setFriends(friends =>
-      friends.map(friend =>
-        friend.id === selectedFriendObj.id
-          ? { ...friend, owe: friend.owe + value }
-          : friend
-      )
-    );
-
-    setSelectedFriendObj(null);
-  }
-
   return (
     <div className='app'>
-      <div className='container'>
-        <LeftSide>
-          <Friends
-            friends={friends}
-            selectedFriendObj={selectedFriendObj}
-            onSelectFriend={handleSelectFriend}
-          />
-          {showAddFriend && (
-            <FriendForm
-              onAddFriends={handleAddFriends}
-              onShowAddFriend={handleShowAddFriend}
-            />
-          )}
-          <button onClick={handleShowAddFriend} type='button'>
-            {showAddFriend ? 'Close' : 'Add friend'}
-          </button>
-        </LeftSide>
-        {selectedFriendObj && (
-          <RightSide
-            key={selectedFriendObj.id}
-            friendObj={selectedFriendObj}
-            onSplitBill={handleSplitBill}
-          />
-        )}
-      </div>
+      {!isLogin && <Login onIsLogin={handleIsLogin} />}
+      {isLogin && <Dashboard friendList={friendList} />}
     </div>
   );
 }

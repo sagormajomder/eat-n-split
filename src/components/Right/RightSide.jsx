@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import InputField from '../common/InputField';
+import InputField from '../Common/InputField';
 
 function RightSide({ friendObj, onSplitBill }) {
   const [bill, setBill] = useState('');

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import InputField from '../common/InputField';
+import InputField from '../Common/InputField';
 
 function FriendForm({ onAddFriends, onShowAddFriend }) {
   const [friendName, setFriendName] = useState('');
