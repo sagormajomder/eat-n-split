@@ -31,7 +31,7 @@ html {
 }
 body {
   font-family: 'Rubik', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1;
   font-weight: 400;
   color: var(--color-grey-dark);
@@ -81,7 +81,7 @@ button {
 .app {
   min-height: inherit;
 }
-.login,
+.auth,
 .dashboard {
   display: flex;
   justify-content: center;
@@ -89,53 +89,55 @@ button {
   min-height: inherit;
 }
 
-.login-container,
+.auth-container,
 .dashboard-container {
   display: flex;
   flex-basis: 90rem;
   flex-wrap: wrap;
+  justify-content: center;
+}
+.dashboard-container {
+  padding: 1.2rem;
 }
 
 /* ////////////////////// */
-/* LOGIN  */
+/* Auth  */
 /* ///////////////////// */
-.login {
+.auth {
   background-color: var(--color-primary-lightest);
   position: relative;
 }
 
-.login-container {
+.auth-container {
   gap: 4.4rem;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-.login-form {
+.auth-form {
   width: 35%;
 }
 
-.login-form input {
+.auth-form input {
   width: 100%;
   padding: 1.2rem;
 }
-.login-form button {
+.auth-form button {
   width: 100%;
   padding: 1.4rem 1.6rem;
 }
 
-.login-email,
-.login-pass {
+.auth-div {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   margin-bottom: 1.6rem;
 }
 
-.login-pass {
+.auth-pass {
   position: relative;
 }
 
-.login-pass span {
+.auth-pass span {
   content: 'Forgot password?';
   position: absolute;
   right: 0;
@@ -147,7 +149,7 @@ button {
   color: var(--color-secondary);
 }
 
-.login-container footer {
+.auth-container footer {
   position: absolute;
   bottom: 0;
   padding: 2rem 0;
@@ -156,7 +158,7 @@ button {
   width: 100%;
 }
 
-.login-container footer p {
+.auth-container footer p {
   display: inline-block;
   margin-right: 1.2rem;
 }
@@ -167,7 +169,8 @@ button {
 
 .left-side {
   flex-basis: 45%;
-  padding: 2.4rem;
+  padding-right: 2.4rem;
+  margin-bottom: 3.2rem;
 }
 
 .left-side button {
@@ -266,6 +269,20 @@ select {
   text-transform: uppercase;
   line-height: 1.4;
   margin-bottom: 2.4rem;
+}
+/* ////////////////////// */
+/* RESPONSIVE */
+/* ////////////////////// */
+@media screen and (max-width: 645px) {
+  body {
+    font-size: 1.6rem;
+  }
+  .auth-form {
+    width: 60%;
+  }
+  .left-side {
+    padding-right: 0;
+  }
 }
 
 /*

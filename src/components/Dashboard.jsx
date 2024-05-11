@@ -1,20 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FriendForm from './Left/FriendForm';
 import Friends from './Left/Friends';
 import LeftSide from './Left/LeftSide';
 import RightSide from './Right/RightSide';
 
-function Dashboard({ friendList }) {
+// const friendList = [
+//   {
+//     id: uuidv4(),
+//     fullName: 'Mehedi Hasan',
+//     image: '/images/f1.jpeg',
+//     owe: -7,
+//   },
+
+//   {
+//     id: uuidv4(),
+//     fullName: 'Sumit Saha',
+//     image: '/images/f2.jpeg',
+//     owe: 20,
+//   },
+//   {
+//     id: uuidv4(),
+//     fullName: 'Joy Chowdhury',
+//     image: '/images/f3.jpeg',
+//     owe: 0,
+//   },
+// ];
+
+function Dashboard() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [friends, setFriends] = useState([]);
   const [selectedFriendObj, setSelectedFriendObj] = useState(null);
-
-  useEffect(
-    function () {
-      setFriends(friendList);
-    },
-    [friendList]
-  );
 
   function handleShowAddFriend() {
     setShowAddFriend(v => !v);
@@ -41,6 +56,14 @@ function Dashboard({ friendList }) {
 
     setSelectedFriendObj(null);
   }
+
+  // useEffect(
+  //   function () {
+  //     setFriends(friendList);
+  //   },
+  //   [friendList]
+  // );
+
   return (
     <div className='dashboard'>
       <div className='dashboard-container'>
