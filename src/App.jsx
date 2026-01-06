@@ -32,12 +32,9 @@ function App() {
     setUsers(u => [...u, newUser]);
   }
 
-  useEffect(
-    function () {
-      setUsers(userList);
-    },
-    [userList]
-  );
+  useEffect(function () {
+    setUsers(userList);
+  }, []);
 
   return (
     <div className='app'>
